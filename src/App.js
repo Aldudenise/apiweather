@@ -13,9 +13,10 @@ function App() {
     })
 
     const [consult, setConsult] = useState(false)
+    const [consultFiveDays, setConsultFiveDays] = useState(false)
     const [result, setResult] = useState({})
 
-    const {city, value} = cityWeather
+    const {city} = cityWeather
 
     //useEffect para el clima actual
     useEffect(() => {
@@ -37,19 +38,20 @@ function App() {
     //useEffect para el clima de los proximos dias
     useEffect(() => {
       const consultAPI = async () => {
-        if(consult) {
+        if(consultFiveDays) {
           const appid = '55673fdb5fb79ad665cf5995124ac6e6'
-          const urlForecast = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${appid}`
+          const urlForecast = `https://api.openweathermap.org/data/2.5/onecall?lat=33.441792&lon=-94.037689&
+          exclude=current,minutely,hourly&appid=${appid}`
 
           const response = await fetch(urlForecast)
           const result = await response.json()
 
           setResult(result)
-          setConsult(false)
+          setConsultFiveDays(false)
         }
       }
       consultAPI()
-    }, [consult])
+    }, [consultFiveDays])
 
 
   return (

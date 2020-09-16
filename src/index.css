@@ -5,6 +5,22 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: rgb(255,82,25);
+  background: linear-gradient(142deg, rgba(255,82,25,1) 0%, rgba(255,200,0,1) 100%);  
+  color: white;
+  height: 100vh;
+}
+
+.App {
+  background-color: rgb(255, 255, 255);
+  width: 60vh;
+  height: 70vh;
+  text-align: center;
+  margin: auto;
+  border-radius: 20px;
+  padding: 1em;
+  margin-top: 1em;
+  color: #ff5219
 }
 
 code {
