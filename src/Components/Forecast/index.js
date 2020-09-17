@@ -11,8 +11,7 @@ function Forecast({result}) {
 
     return(
         <div>
-            <p>El clima para los próximos días en {name} es:</p>
-            <p>Mañana: temperatura de {Math.round(main.temp - kelvin)}</p>
+            <p>Acá iría un pronostico si tuviera uno</p>
         </div>
     )
 }

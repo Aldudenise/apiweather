@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Header from './Components/Header'
+import ActualPosition from './Components/ActualPosition'
 import Form from './Components/Form'
 import Weather from './Components/Weather'
 import Forecast from './Components/Forecast'
@@ -11,25 +12,53 @@ function App() {
       city: '',
       value: ''
     })
-
     const [consult, setConsult] = useState(false)
     const [consultFiveDays, setConsultFiveDays] = useState(false)
     const [result, setResult] = useState({})
-
     const {city} = cityWeather
+    
+    const [myLocation, setMyLocation] = useState({
+      latitude: null,
+      longitude: null
+    })
 
-    //useEffect para el clima actual
+    if('geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        setMyLocation({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude
+        })
+      })
+    }
+
+    const {latitude, longitude} = myLocation
+    useEffect(() => {
+      const consultAPI = async () => {
+        if(myLocation) {
+          const appid = '55673fdb5fb79ad665cf5995124ac6e6';
+          const urlWeatherActualLocation = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${appid}` 
+
+          const response = await fetch(urlWeatherActualLocation)
+          const myLocation = await response.json()
+
+          setMyLocation(myLocation)
+        }
+      }
+      consultAPI()
+    }, [myLocation])
+
+    //useEffect para el clima actual de la ciudad elegida
     useEffect(() => {
       const consultAPI = async () => {
         if(consult) {
           const appid = '55673fdb5fb79ad665cf5995124ac6e6';
-        const urlWeatherToday = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${appid}`
+          const urlWeatherToday = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${appid}`
 
-        const response = await fetch(urlWeatherToday)
-        const result = await response.json()
+          const response = await fetch(urlWeatherToday)
+          const result = await response.json()
 
-        setResult(result)
-        setConsult(false)
+          setResult(result)
+          setConsult(false)
         }
       }
       consultAPI()
@@ -57,6 +86,9 @@ function App() {
   return (
     <div className="App">
       <Header />
+      <ActualPosition 
+        myLocation={myLocation}
+      />
       <Form 
         cityWeather={cityWeather}
         setCityWeather={setCityWeather}

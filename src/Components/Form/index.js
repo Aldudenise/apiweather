@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 
 function Form({cityWeather, setCityWeather, setConsult}) {
 
-
     const [error, setError] = useState(false)
 
     const { city } = cityWeather
@@ -29,7 +28,7 @@ function Form({cityWeather, setCityWeather, setConsult}) {
 
     return(
         <form onSubmit={handleSubmit}>
-            {error ? <p>Debes elegir una ciudad</p> : null}
+            {error ? <p className="cityError">Debes elegir una ciudad</p> : null}
             <select name="city" id="city" value={city} onChange={handleChange}>
                 <option value="">Selecciona una ciudad</option>
                 <option value="paris">Paris</option>
