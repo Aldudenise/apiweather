@@ -29,7 +29,7 @@ function Form({cityWeather, setCityWeather, setConsult}) {
     return(
         <form onSubmit={handleSubmit}>
             {error ? <p className="cityError">Debes elegir una ciudad</p> : null}
-            <select name="city" id="city" value={city} onChange={handleChange}>
+            <select className="select" name="city" id="city" value={city} onChange={handleChange}>
                 <option value="">Selecciona una ciudad</option>
                 <option value="paris">Paris</option>
                 <option value="tokyo">Tokyo</option>
@@ -37,7 +37,7 @@ function Form({cityWeather, setCityWeather, setConsult}) {
                 <option value="miami">Miami</option>
                 <option value="sydney">Sydney</option>
             </select>
-            <input type="submit" value="Buscar clima"></input>
+            <button type="submit" className="button">Buscar clima</button>
         </form>
     )
 }

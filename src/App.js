@@ -3,7 +3,7 @@ import Header from "./Components/Header";
 import ActualPosition from "./Components/ActualPosition";
 import Form from "./Components/Form";
 import Weather from "./Components/Weather";
-import Forecast from "./Components/Forecast";
+//import Forecast from "./Components/Forecast";
 
 function App() {
     //state del form
@@ -21,6 +21,8 @@ function App() {
     });
     const [locationWeather, setLocationWeather] = useState({})
 
+
+  //useEffect para el clima en la posición actual
     useEffect(() => {
         if ("geolocation" in navigator) {
             navigator.geolocation.getCurrentPosition(async (position) => {
@@ -64,22 +66,21 @@ function App() {
     }, [consult]);
 
     //useEffect para el clima de los proximos dias
-    useEffect(() => {
-        const consultAPI = async () => {
-            if (consultFiveDays) {
-                const appid = "55673fdb5fb79ad665cf5995124ac6e6";
-                const urlForecast = `api.openweathermap.org/data/2.5/forecast/daily?q=${city}&cnt={5}&appid=${appid}`;
+    // useEffect(() => {
+    //     const consultAPI = async () => {
+    //         if (consultFiveDays) {
+    //             const appid = "55673fdb5fb79ad665cf5995124ac6e6";
+    //             const urlForecast = `api.openweathermap.org/data/2.5/forecast/daily?q=${city}&cnt={5}&appid=${appid}`;
 
-                const response = await fetch(urlForecast);
-                const consultFiveDays = await response.json();
+    //             const response = await fetch(urlForecast);
+    //             const consultFiveDays = await response.json();
 
-
-                setConsultFiveDays(consultFiveDays);
-                console.log(consultFiveDays)
-            }
-        };
-        consultAPI();
-    }, [consultFiveDays]);
+    //             setConsultFiveDays(consultFiveDays);
+    //             console.log(consultFiveDays)
+    //         }
+    //     };
+    //     consultAPI();
+    // }, [consultFiveDays]);
 
     return (
         <div className="App">
@@ -91,9 +92,9 @@ function App() {
                 setConsult={setConsult}
             />
             <Weather result={result} />
-            <Forecast setConsultFiveDays={setConsultFiveDays} 
+            {/* <Forecast setConsultFiveDays={setConsultFiveDays} 
             consultFiveDays={consultFiveDays}
-            />
+            /> */}
         </div>
     );
 }

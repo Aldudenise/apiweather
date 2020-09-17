@@ -1,11 +1,18 @@
 import React from 'react'
 
-function Forecast({consultFiveDays}) {
+function Forecast({result}) {
+    const {name, main} = result
 
+    if(!name){
+        return null
+    }
+
+    const kelvin = 273.15
 
     return(
         <div>
-            <p>Acá iría un pronostico si tuviera uno</p>
+            <p>El clima para los próximos días en {name}:</p>
+            <p>Mañana: temperatura de {Math.round(main.temp - kelvin)}</p>
         </div>
     )
 }
