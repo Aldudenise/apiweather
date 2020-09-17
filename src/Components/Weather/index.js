@@ -14,8 +14,8 @@ function Weather({result}) {
         <div>
                 <p>El clima de {name} es:</p>
                 <img src={`http://openweathermap.org/img/wn/${weather[0].icon}@2x.png`}></img>
-                <p>{Math.round(main.temp - kelvin)}</p>
-                <p>Puede variar entre una máxima de {Math.round(main.temp_max - kelvin)} y una mínima de {Math.round(main.temp_min - kelvin)}</p>
+                <p>{Math.round(main.temp - kelvin)}°C</p>
+                <p>Puede variar entre una máxima de {Math.round(main.temp_max - kelvin)}°C y una mínima de {Math.round(main.temp_min - kelvin)}°C</p>
                 <p>Humedad: {Math.round(main.humidity)}%</p>
         </div>
     )

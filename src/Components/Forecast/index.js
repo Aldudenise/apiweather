@@ -1,13 +1,7 @@
 import React from 'react'
 
-function Forecast({result}) {
-    const {name, main} = result
+function Forecast({consultFiveDays}) {
 
-    if(!name){
-        return null
-    }
-
-    const kelvin = 273.15
 
     return(
         <div>
