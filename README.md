@@ -6,8 +6,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Aclaraciones:
 
-Para visualizar la temperatura de la ubicación actual del usuario, deberá darle permisos para acceder al gps.
-En la versión Desktop, la ubicación es dada por ISP.
+Para visualizar la temperatura de la ubicación actual del usuario, deberá darle permisos para acceder al gps. <br>
+En la versión Desktop, la ubicación es dada por ISP.<br>
 Para esta app se utilizó una key de mi autoría. De llevarse a producción, el usuario tendrpa que proveer su propia Apikey.
 
 ## To Do:
