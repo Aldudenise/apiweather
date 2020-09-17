@@ -8,7 +8,8 @@ Aclaraciones:
 
 Para visualizar la temperatura de la ubicación actual del usuario, deberá darle permisos para acceder al gps. <br>
 En la versión Desktop, la ubicación es dada por ISP.<br>
-Para esta app se utilizó una key de mi autoría. De llevarse a producción, el usuario tendrpa que proveer su propia Apikey.
+Para esta app se utilizó una key de mi autoría. De llevarse a producción, el usuario tendrá que proveer su propia Apikey. <br>
+Para inicializar la app se deberá correr el comando npm start en el directorio del proyecto. Puede verse en  http://localhost:3000
 
 ## To Do:
 
