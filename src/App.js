@@ -12,7 +12,7 @@ function App() {
         value: "",
     });
     const [consult, setConsult] = useState(false);
-    const [consultFiveDays, setConsultFiveDays] = useState(false);
+//    const [consultFiveDays, setConsultFiveDays] = useState(false);
     const [result, setResult] = useState({});
     const { city } = cityWeather;
     const [myLocation, setMyLocation] = useState({
@@ -35,9 +35,7 @@ function App() {
                 const response = await fetch(urlWeatherActualLocation);
                 const myLocationWeather = await response.json();
                 if (response.status == 200) {
-                    console.log(myLocationWeather);
                     setMyLocation(myLocationWeather)
-                    console.log(urlWeatherActualLocation)
 
                 } else {
                     alert("Weather API error");
