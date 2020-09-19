@@ -13,4 +13,4 @@ Para inicializar la app se deberá correr el comando npm start en el directorio 
 
 ## To Do:
 
-Visualizar el clima de los próximos 5 días.
+Visualizar el clima de los próximos 5 días del usuario.
