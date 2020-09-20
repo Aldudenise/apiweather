@@ -1,0 +1,15 @@
+.actualPosition {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.position {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+@media(min-width: 500px) {
+    .actualPosition, .position {
+        font-size: 18px;
+    }
+}

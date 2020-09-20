@@ -1,0 +1,36 @@
+.forecastTittle {
+    font-size: 22px;
+  font-weight: bold;
+  margin-top: 2em;
+}
+
+.dailyTittle {
+    font-weight: bold;
+    display: block;
+    font-size: 19px;
+  }
+
+  .dailyForecast{
+    width: 80%;
+    display: inline-block;
+    margin: 10px;
+    font-size: 20px;
+    border: #ff5219 0.13em solid;
+    border-radius: 10px;
+  }
+
+  span{
+      display: block;
+  }
+
+  @media(min-width: 500px) {
+    .dailyForecast {
+        padding: 5px;
+        width: 22%;
+        font-size: 15px;
+    }
+
+    .dailyTittle {
+        font-size: 18px;
+    }
+}

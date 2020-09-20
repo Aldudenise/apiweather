@@ -1,0 +1,16 @@
+.weather {
+    width: 80%;
+    margin: auto;
+    font-size: 20px;
+}
+
+.weatherCity{
+    font-weight: bold;
+    font-size: 23px;
+  }
+
+@media(min-width: 500px) {
+    .weather {
+        font-size: 17px;
+    }
+}

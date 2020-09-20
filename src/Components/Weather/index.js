@@ -1,4 +1,5 @@
 import React from 'react'
+import './style.css'
 
 function Weather({result}) {
     const {name, main, weather} = result

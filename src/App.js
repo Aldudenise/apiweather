@@ -3,7 +3,7 @@ import Header from "./Components/Header";
 import ActualPosition from "./Components/ActualPosition";
 import Form from "./Components/Form";
 import Weather from "./Components/Weather";
-//import Forecast from "./Components/Forecast";
+import Forecast from "./Components/Forecast";
 
 function App() {
     //state del form
@@ -12,8 +12,8 @@ function App() {
         value: "",
     });
     const [consult, setConsult] = useState(false);
-//    const [consultFiveDays, setConsultFiveDays] = useState(false);
     const [result, setResult] = useState({});
+    const [resultFiveDays, setResultFiveDays] = useState({});
     const { city } = cityWeather;
     const [myLocation, setMyLocation] = useState({
         latitude: null,
@@ -29,7 +29,7 @@ function App() {
                 const { latitude, longitude } = position.coords;
                 setMyLocation({ latitude, longitude });
 
-                const appid = "55673fdb5fb79ad665cf5995124ac6e6";
+                const appid = "76aef8ef0fa81bcdd9cc92a0a3f31963";
                 const urlWeatherActualLocation = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${appid}`;
 
                 const response = await fetch(urlWeatherActualLocation);
@@ -50,35 +50,26 @@ function App() {
     useEffect(() => {
         const consultAPI = async () => {
             if (consult) {
-                const appid = "55673fdb5fb79ad665cf5995124ac6e6";
+                const appid = "76aef8ef0fa81bcdd9cc92a0a3f31963";
                 const urlWeatherToday = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${appid}`;
 
-                const response = await fetch(urlWeatherToday);
-                const result = await response.json();
+                const responseWeatherToday = await fetch(urlWeatherToday);
+                const resultWeatherToday = await responseWeatherToday.json();
 
-                setResult(result);
+                setResult(resultWeatherToday);
+
+                const urlFiveDays = `https://api.openweathermap.org/data/2.5/onecall?lat=${resultWeatherToday.coord.lat}&lon=${resultWeatherToday.coord.lon}&exclude=current,hourly,minutely&appid=${appid}`;
+
+                const responseFiveDays = await fetch(urlFiveDays);
+                const resultFiveDays  = await responseFiveDays.json();
+                
+                setResultFiveDays(resultFiveDays);
+
                 setConsult(false);
             }
         };
         consultAPI();
     }, [consult]);
-
-    //useEffect para el clima de los proximos dias
-    // useEffect(() => {
-    //     const consultAPI = async () => {
-    //         if (consultFiveDays) {
-    //             const appid = "55673fdb5fb79ad665cf5995124ac6e6";
-    //             const urlForecast = `api.openweathermap.org/data/2.5/forecast/daily?q=${city}&cnt={5}&appid=${appid}`;
-
-    //             const response = await fetch(urlForecast);
-    //             const consultFiveDays = await response.json();
-
-    //             setConsultFiveDays(consultFiveDays);
-    //             console.log(consultFiveDays)
-    //         }
-    //     };
-    //     consultAPI();
-    // }, [consultFiveDays]);
 
     return (
         <div className="App">
@@ -90,9 +81,7 @@ function App() {
                 setConsult={setConsult}
             />
             <Weather result={result} />
-            {/* <Forecast setConsultFiveDays={setConsultFiveDays} 
-            consultFiveDays={consultFiveDays}
-            /> */}
+            <Forecast city={city} result={resultFiveDays} />
         </div>
     );
 }
